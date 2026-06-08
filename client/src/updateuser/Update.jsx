@@ -22,29 +22,33 @@ const UpdateUser = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/user/${id}`)
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+  axios
+    .get(`https://mern-crud-app-rt96.onrender.com/api/user/${id}`)
+    .then((response) => {
+      setUser(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, [id]);
 
-  const submitForm = async (e) => {
-    e.preventDefault();
-    await axios
-      .put(`http://localhost:8000/api/update/user/${id}`, user)
-      .then((response) => {
-        toast.success(response.data.message, { position: "top-right" });
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
+const submitForm = async (e) => {
+  e.preventDefault();
+  await axios
+    .put(
+      `https://mern-crud-app-rt96.onrender.com/api/update/user/${id}`,
+      user
+    )
+    .then((response) => {
+      toast.success(response.data.message, {
+        position: "top-right",
       });
-  };
-
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
   return (
     <div className="addUser">
       <Link to="/" type="button" class="btn btn-secondary">
