@@ -21,17 +21,23 @@ const AddUser = () => {
   };
 
   const submitForm = async (e) => {
-    e.preventDefault();
-    await axios
-      .post("http://localhost:8000/api/user", user)
-      .then((response) => {
-        toast.success(response.data.message, { position: "top-right" });
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
+  e.preventDefault();
+
+  await axios
+    .post(
+      "https://mern-crud-app-rt96.onrender.com/api/user",
+      user
+    )
+    .then((response) => {
+      toast.success(response.data.message, {
+        position: "top-right",
       });
-  };
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
   return (
     <div className="addUser">
